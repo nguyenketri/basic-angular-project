@@ -1,5 +1,36 @@
 <main class="main">
   <header-layout />
+  <!-- Cart UI -->
+  <div class="wrapper-cart">
+    <h1>shopping cart</h1>
+    <div class="group-cart">
+      <div class="header-cart">
+        <div class="col-1">Image</div>
+        <div class="col-2">Name</div>
+        <div class="col-3">Price</div>
+        <div class="col-4">Action</div>
+      </div>
+      <div class="body-cart">
+        <div class="row-cart">
+          <div class="col-1">
+            <img src="assets/images/logo_congty.png" alt="Image" width="50px" />
+          </div>
+          <div class="col-2">Company</div>
+          <div class="col-3">200$</div>
+          <div class="col-4">
+            <div class="btn-bin">
+              <img
+                src="assets/images/bin.jpg"
+                alt="Bin"
+                height="30px"
+                width="30px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- text, property, attribute binding -->
   <div>{{ title.name }}</div>
   <button [disabled]="isDisabled">Click me</button>
@@ -21,5 +52,6 @@
   <!-- Two Way Binding -->
   <input type="text" [(ngModel)]="twoBindingMessage" />
   <p>Message:{{ twoBindingMessage }}</p>
+
   <router-outlet />
 </main>
