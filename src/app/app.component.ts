@@ -4,11 +4,12 @@ import { HeaderLayoutComponent } from './shared/header-layout/header-layout.comp
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from './shared/pipes/CurrencyPipe.pipe';
 import { UpperCasePipe } from './shared/pipes/UpperCasePipe.pipe';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderLayoutComponent,FormsModule,CurrencyPipe,UpperCasePipe],
+  imports: [RouterOutlet,HeaderLayoutComponent,FormsModule,CurrencyPipe,UpperCasePipe,NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -48,4 +49,12 @@ export class AppComponent {
   }
   // two way binding
   twoBindingMessage = ''
+
+  // list data render 
+  products = [
+    {name:'Shoe 1',price:400000, image:'assets/images/shoe.jpg'},
+    {name:'Shoe 2',price:500000, image:'assets/images/shoe.jpg'},
+    {name:'Shoe 3',price:500000, image:'assets/images/shoe.jpg'},
+    {name:'Shoe 4',price:700000, image:'assets/images/shoe.jpg'},
+   ]
 }

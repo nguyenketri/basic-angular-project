@@ -11,12 +11,12 @@
         <div class="col-4">Action</div>
       </div>
       <div class="body-cart">
-        <div class="row-cart">
+        <div class="row-cart" *ngFor="let item of products">
           <div class="col-1">
-            <img src="assets/images/logo_congty.png" alt="Image" width="50px" />
+            <img src="{{ item.image }}" alt="Image" width="50px" />
           </div>
-          <div class="col-2">{{ "Company" | upperCasePipe }}</div>
-          <div class="col-3">{{ 400000 | currencyPipe }}</div>
+          <div class="col-2">{{ item.name | upperCasePipe }}</div>
+          <div class="col-3">{{ item.price | currencyPipe }}</div>
           <div class="col-4">
             <div class="btn-bin">
               <img
