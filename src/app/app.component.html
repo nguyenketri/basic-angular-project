@@ -2,7 +2,9 @@
   <header-layout />
   <!-- Cart UI -->
   <div class="wrapper-cart">
-    <h1>shopping cart</h1>
+    <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
+    <button (click)="handleActive()">Click Shop</button>
+    <div *ngIf="isVisible">Hello World</div>
     <div class="group-cart">
       <div class="header-cart">
         <div class="col-1">Image</div>
@@ -32,26 +34,27 @@
     </div>
   </div>
   <!-- text, property, attribute binding -->
-  <div>{{ title.name }}</div>
-  <button [disabled]="isDisabled">Click me</button>
-  <img src="/assets/images/shopping_cart.png" alt="{{ contentImage }}" />
-  <img src="/assets/images/shopping_cart.png" [attr.alt]="altText" />
-  <!-- text, property, attribute binding -->
-  <!-- Event -->
-  <h1>Click is an event</h1>
+  <div class="form-input">
+    <div>{{ title.name }}</div>
+    <button [disabled]="isDisabled">Click me</button>
+    <img src="/assets/images/shopping_cart.png" alt="{{ contentImage }}" />
+    <img src="/assets/images/shopping_cart.png" [attr.alt]="altText" />
+    <!-- text, property, attribute binding -->
+    <!-- Event -->
+    <h1>Click is an event</h1>
 
-  <button (click)="handleClick()">{{ nameBtn }}</button>
-  <div>Message: {{ message }}</div>
-  <button (click)="handleClickName('Tri')">Click name</button><br />
-  <input type="text" (keyup)="updateField()" /><br />
-  <!-- keyup event -->
-  <input type="text" (keyup)="onKeyup($event)" /><br />
-  <!-- change event -->
-  <input type="text" (change)="onChange($event)" /><br />
-  <!-- Event -->
-  <!-- Two Way Binding -->
-  <input type="text" [(ngModel)]="twoBindingMessage" />
-  <p>Message:{{ twoBindingMessage }}</p>
-
+    <button (click)="handleClick()">{{ nameBtn }}</button>
+    <div>Message: {{ message }}</div>
+    <button (click)="handleClickName('Tri')">Click name</button><br />
+    <input type="text" (keyup)="updateField()" /><br />
+    <!-- keyup event -->
+    <input type="text" (keyup)="onKeyup($event)" /><br />
+    <!-- change event -->
+    <input type="text" (change)="onChange($event)" /><br />
+    <!-- Event -->
+    <!-- Two Way Binding -->
+    <input type="text" [(ngModel)]="twoBindingMessage" />
+    <p>Message:{{ twoBindingMessage }}</p>
+  </div>
   <router-outlet />
 </main>

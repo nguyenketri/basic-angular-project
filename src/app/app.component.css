@@ -5,12 +5,14 @@
 .wrapper-cart{
     background-image: linear-gradient(to right , yellow, red, green);
     height: calc(100vh - 70px);
- 
+    height: 90%;
 }
 .wrapper-cart h1{
     text-align: center;
     text-transform: uppercase;
     color: #fff;
+    display: none;
+    
 }
 
 .group-cart{
@@ -59,4 +61,12 @@
     padding: 10px;
     width: 25px;
     height: 25px;
+}
+
+.wrapper-cart .active{
+    display: block;
+}
+
+.form-input{
+    height: auto;
 }
