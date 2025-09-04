@@ -10,6 +10,17 @@ import { HeaderLayoutComponent } from './shared/header-layout/header-layout.comp
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-basic-project';
-  
+  // Dynamic Text
+  title = {
+    name:"Tri",
+    age:21,
+  };
+
+  // Dynamic Property
+  isDisabled = true;
+  // Dynamic Attribute
+  contentImage = "Shopping"
+
+  // Attribute Binding
+  altText = "conneo"
 }

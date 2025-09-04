@@ -1,5 +1,8 @@
 <main class="main">
   <header-layout />
+  <div>{{ title.name }}</div>
+  <button [disabled]="isDisabled">Click me</button>
+  <img src="/assets/images/shopping_cart.png" alt="{{ contentImage }}" />
+  <img src="/assets/images/shopping_cart.png" [attr.alt]="altText" />
+  <router-outlet />
 </main>
-
-<router-outlet />
