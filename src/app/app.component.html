@@ -18,5 +18,8 @@
   <!-- change event -->
   <input type="text" (change)="onChange($event)" /><br />
   <!-- Event -->
+  <!-- Two Way Binding -->
+  <input type="text" [(ngModel)]="twoBindingMessage" />
+  <p>Message:{{ twoBindingMessage }}</p>
   <router-outlet />
 </main>
