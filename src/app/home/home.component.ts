@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { HeaderLayoutComponent } from '../shared/header-layout/header-layout.component';
-import { FormsModule } from '@angular/forms';
-import { CurrencyPipe } from '../shared/pipes/CurrencyPipe.pipe';
-import { UpperCasePipe } from '../shared/pipes/UpperCasePipe.pipe';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
+import { ProductItems } from '../shared/types/productItem';
+import { ProductItemComponent } from '../shared/product-item/product-item.component';
+import { Book } from '../shared/types/books';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet,
-    FormsModule,
-    CurrencyPipe,
-    UpperCasePipe,
-    NgFor,
+  imports: [
+    RouterOutlet,
     NgClass,
+    ProductItemComponent,
     NgIf,
-    RouterLink],
+    ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -58,7 +56,7 @@ export class HomeComponent {
   twoBindingMessage = ''
 
   // list data render 
-  products = [
+  products: ProductItems[] = [
     {id: 1,name:'Shoe 1',price:400000, image:'assets/images/shoe.jpg'},
     {id: 2,name:'Shoe 2',price:500000, image:'assets/images/shoe.jpg'},
     {id: 3,name:'Shoe 3',price:500000, image:'assets/images/shoe.jpg'},
@@ -74,4 +72,23 @@ export class HomeComponent {
       this.isActive = !this.isActive
     }
     isVisible = false
+    
+    handleDelete(id: number){
+      const indexFind = this.products.findIndex(i => i.id == id);
+      if(indexFind != -1){
+        this.products.splice(indexFind,1)
+      }
+    }
+
+    books: Book[] = [
+      {id:1,name:"test1"},
+      {id:2,name:"test2"},
+      {id:3,name:"test3"},
+    ]
+    HandleDeleteBook(id: number){
+      const findIndex = this.books.findIndex(i => i.id == id);
+      if(findIndex != -1){
+        this.books.splice(findIndex,1)
+      }
+    }
 }

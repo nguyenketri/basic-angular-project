@@ -1,59 +1,34 @@
-<div>
-  <div class="wrapper-cart">
-    <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
-    <button (click)="handleActive()">Click Shop</button>
-    <div *ngIf="isVisible">Hello World</div>
-    <div class="group-cart">
-      <div class="header-cart">
-        <div class="col-1">Image</div>
-        <div class="col-2">Name</div>
-        <div class="col-3">Price</div>
-        <div class="col-4">Action</div>
-      </div>
-      <div class="body-cart">
-        <div class="row-cart" *ngFor="let item of products">
-          <div class="col-1">
-            <a [routerLink]="['/detail', item.id]">
-              <img src="{{ item.image }}" alt="Image" width="50px" />
-            </a>
-          </div>
-          <div class="col-2">{{ item.name | upperCasePipe }}</div>
-          <div class="col-3">{{ item.price | currencyPipe }}</div>
-          <div class="col-4">
-            <div class="btn-bin">
-              <img
-                src="assets/images/bin.jpg"
-                alt="Bin"
-                height="30px"
-                width="30px"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- text, property, attribute binding -->
+<div class="wrapper-cart">
+  <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
+  <button (click)="handleActive()">Click Shop</button>
+  <div *ngIf="isVisible">Hello World</div>
+  <app-product-item
+    [products]="products"
+    (dataEvent)="handleDelete($event)"
+    [books]="books"
+    (dataBook)="HandleDeleteBook($event)"
+  />
+</div>
+<!-- text, property, attribute binding 
+ 
   <div class="form-input">
     <div>{{ title.name }}</div>
     <button [disabled]="isDisabled">Click me</button>
     <img src="/assets/images/shopping_cart.png" alt="{{ contentImage }}" />
     <img src="/assets/images/shopping_cart.png" [attr.alt]="altText" />
-    <!-- text, property, attribute binding -->
-    <!-- Event -->
+    text, property, attribute binding -->
+<!-- Event 
     <h1>Click is an event</h1>
 
     <button (click)="handleClick()">{{ nameBtn }}</button>
     <div>Message: {{ message }}</div>
     <button (click)="handleClickName('Tri')">Click name</button><br />
     <input type="text" (keyup)="updateField()" /><br />
-    <!-- keyup event -->
+     keyup event 
     <input type="text" (keyup)="onKeyup($event)" /><br />
-    <!-- change event -->
+    change event 
     <input type="text" (change)="onChange($event)" /><br />
-    <!-- Event -->
-    <!-- Two Way Binding -->
+     Event 
+    Two Way Binding
     <input type="text" [(ngModel)]="twoBindingMessage" />
-    <p>Message:{{ twoBindingMessage }}</p>
-  </div>
-</div>
+    <p>Message:{{ twoBindingMessage }}</p> -->

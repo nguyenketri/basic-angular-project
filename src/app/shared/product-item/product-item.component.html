@@ -1,0 +1,52 @@
+<div class="group-cart">
+  <div class="header-cart">
+    <div class="col-1">Image</div>
+    <div class="col-2">Name</div>
+    <div class="col-3">Price</div>
+    <div class="col-4">Action</div>
+  </div>
+  <div class="body-cart">
+    <div class="row-cart" *ngFor="let item of products">
+      <div class="col-1">
+        <a [routerLink]="['/detail', item.id]">
+          <img src="{{ item.image }}" alt="Image" width="50px" />
+        </a>
+      </div>
+      <div class="col-2">{{ item.name | upperCasePipe }}</div>
+      <div class="col-3">{{ item.price | currencyPipe }}</div>
+
+      <div class="col-4">
+        <div class="btn-bin" (click)="handleDelete(item.id)">
+          <img
+            src="assets/images/bin.jpg"
+            alt="Bin"
+            height="30px"
+            width="30px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table border="1" style="border-collapse: collapse">
+      <thead>
+        <tr>
+          <th style="padding: 7px">ID</th>
+          <th style="padding: 7px">Name</th>
+          <th style="padding: 7px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of books">
+          <td style="padding: 7px">{{ i.id }}</td>
+          <td style="padding: 7px">{{ i.name }}</td>
+          <td style="padding: 7px">
+            <button type="button" (click)="handleDeleteBook(i.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

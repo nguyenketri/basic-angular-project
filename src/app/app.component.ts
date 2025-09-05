@@ -17,5 +17,9 @@ import { DetailComponent } from './detail/detail.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
- 
+  // Props có 3 tính chất 
+  // Truyền dữ liệu 1 chiều : Từ component cha đến component con
+  // Không thay đổi được dữ liệu: Component con không dk phép chỉnh sửa trực tiếp giá trị Props
+  // Hỗ trợ mọi loại dữ liệu : Có thể là string, number, object, array,function...
+  
 }
