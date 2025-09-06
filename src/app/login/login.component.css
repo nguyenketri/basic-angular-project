@@ -1,0 +1,21 @@
+form{
+    
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 10px;
+    margin: auto;
+    margin: 10px auto;
+}
+input{
+    padding: 5px;
+  
+}
+button{
+    padding: 5px;
+    cursor: pointer;
+    
+}
+button:hover{
+    background-image: linear-gradient(to right, red, yellow, green);
+}

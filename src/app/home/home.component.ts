@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
@@ -87,10 +87,11 @@ export class HomeComponent implements OnInit{
       {id:3,name:"test3"},
     ]
     HandleDeleteBook(id: number){
-      const findIndex = this.books.findIndex(i => i.id == id);
-      if(findIndex != -1){
-        this.books.splice(findIndex,1)
-      }
+      // const findIndex = this.books.findIndex(i => i.id == id);
+      // if(findIndex != -1){
+      //   this.books.splice(findIndex,1)
+      // }
+      this.books = this.books.filter(i => i.id !== id)
     }
     // Constrcutor cho phép cta sử dụng service or direcyti từ file, componnet hay thư viện bn đã khợi tạo ra
     constructor(){
@@ -103,4 +104,8 @@ export class HomeComponent implements OnInit{
       .then(response => response.json())
       .then(json => console.log(json))
     }
+    // DoCheck sẽ thay đổi và cập nhật theo bất kì cái gì thay đổi trong code : state, hàm, DOM
+    // ngDoCheck(): void {
+    //     console.log("check Component")
+    // }
 }

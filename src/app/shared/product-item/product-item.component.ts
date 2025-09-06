@@ -1,4 +1,4 @@
-import { Component, Input, Output,EventEmitter } from '@angular/core';
+import { Component, Input, Output,EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UpperCasePipe } from '../pipes/UpperCasePipe.pipe';
@@ -25,7 +25,7 @@ import { Book } from '../types/books';
   templateUrl: './product-item.component.html',
   styleUrl: './product-item.component.css'
 })
-export class ProductItemComponent {
+export class ProductItemComponent implements OnChanges {
   // Props có 3 tính chất 
   // Truyền dữ liệu 1 chiều : Từ component cha đến component con
   // Không thay đổi được dữ liệu: Component con không dk phép chỉnh sửa trực tiếp giá trị Props
@@ -50,5 +50,10 @@ export class ProductItemComponent {
         const sum = this.products.reduce((t,c)=> {return t+c.price },0)
         return `Total Price ${sum}`
     }
-  
-}
+    // onChange dùng trong Componnet Con và đặc biệt phải sử dụng ở Props
+    // luôn nhận 1 gtri change cho phép biết props hiện tại và props trc đó
+    ngOnChanges(changes: SimpleChanges): void {
+       console.log(changes['books'].currentValue)
+       console.log(changes['books'].previousValue)
+   }
+  }
