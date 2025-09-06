@@ -44,4 +44,11 @@ export class ProductItemComponent {
     handleDeleteBook(id: number){
       this.dataBook.emit(id)
     }
+
+    // Getter
+    get totalPrice(): string{
+        const sum = this.products.reduce((t,c)=> {return t+c.price },0)
+        return `Total Price ${sum}`
+    }
+  
 }

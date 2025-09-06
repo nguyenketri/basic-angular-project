@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
@@ -14,11 +14,12 @@ import { Book } from '../shared/types/books';
     NgClass,
     ProductItemComponent,
     NgIf,
+    
     ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   // *  Dynamic Text
   title = {
     name:"Tri",
@@ -90,5 +91,16 @@ export class HomeComponent {
       if(findIndex != -1){
         this.books.splice(findIndex,1)
       }
+    }
+    // Constrcutor cho phép cta sử dụng service or direcyti từ file, componnet hay thư viện bn đã khợi tạo ra
+    constructor(){
+       console.log('Inistall component')
+    }
+    // ngOnInit nhiệm vụ là lm vc và tt vs API 
+    ngOnInit(): void{
+     console.log('Initialization Component')
+     fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
     }
 }
