@@ -3,7 +3,6 @@
     <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
     <button (click)="handleActive()">Click Shop</button>
     <div *ngIf="isVisible">Hello World</div>
-    <h2>Giá trị visible {{ isVisible }}</h2>
     <app-product-item
       [products]="products"
       (dataEvent)="handleDelete($event)"

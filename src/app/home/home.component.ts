@@ -5,6 +5,8 @@ import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from '../shared/product-item/product-item.component';
 import { Book } from '../shared/types/books';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { BlogService } from '../../services/BlogService';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,10 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
 
   // router
-  constructor(private router: Router){
+  constructor(
+    private router: Router,
+    private blogService: BlogService
+  ){
 
   }
   handleToLogin(){
@@ -106,10 +111,23 @@ export class HomeComponent implements OnInit{
     // ngOnInit nhiệm vụ là lm vc và tt vs API 
     ngOnInit(): void{
      console.log('Initialization Component')
-     fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(response => response.json())
-      .then(json => console.log(json))
+      this.blogService.getBlog()
+      .subscribe({
+        next: ({data}) => {
+          this.products = data.map((i: any) => ({
+            ...i,
+            name:i.title,
+            image:'assets/images/shoe.jpg',
+            price:i.body
+          }))
+        },
+        error: (err) => console.log(err),
+        complete: () => console.log("Resquest Complete")
+      })
     }
+      
+    
+    
     // DoCheck sẽ thay đổi và cập nhật theo bất kì cái gì thay đổi trong code : state, hàm, DOM
     // ngDoCheck(): void {
     //     console.log("check Component")
