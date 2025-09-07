@@ -1,13 +1,18 @@
-<div class="wrapper-cart">
-  <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
-  <button (click)="handleActive()">Click Shop</button>
-  <div *ngIf="isVisible">Hello World</div>
-  <app-product-item
-    [products]="products"
-    (dataEvent)="handleDelete($event)"
-    [books]="books"
-    (dataBook)="HandleDeleteBook($event)"
-  />
+<div *ngIf="isVisible">
+  <div class="wrapper-cart">
+    <h1 [ngClass]="{ active: isActive }">shopping cart</h1>
+    <button (click)="handleActive()">Click Shop</button>
+    <div *ngIf="isVisible">Hello World</div>
+    <h2>Giá trị visible {{ isVisible }}</h2>
+    <app-product-item
+      [products]="products"
+      (dataEvent)="handleDelete($event)"
+      [books]="books"
+      (dataBook)="HandleDeleteBook($event)"
+    />
+  </div>
+  <button (click)="handleToLogin()">Go to Login</button>
+  <button (click)="handleIsVisible()">Change Visible</button>
 </div>
 <!-- text, property, attribute binding 
  

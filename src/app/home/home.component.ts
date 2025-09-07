@@ -4,7 +4,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from '../shared/product-item/product-item.component';
 import { Book } from '../shared/types/books';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +20,14 @@ import { Book } from '../shared/types/books';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
+
+  // router
+  constructor(private router: Router){
+
+  }
+  handleToLogin(){
+    this.router.navigate(['/login'])
+  }
   // *  Dynamic Text
   title = {
     name:"Tri",
@@ -72,7 +80,7 @@ export class HomeComponent implements OnInit{
     handleActive(): void{
       this.isActive = !this.isActive
     }
-    isVisible = false
+    isVisible: boolean = true
     
     handleDelete(id: number){
       const indexFind = this.products.findIndex(i => i.id == id);
@@ -94,9 +102,7 @@ export class HomeComponent implements OnInit{
       this.books = this.books.filter(i => i.id !== id)
     }
     // Constrcutor cho phép cta sử dụng service or direcyti từ file, componnet hay thư viện bn đã khợi tạo ra
-    constructor(){
-       console.log('Inistall component')
-    }
+    
     // ngOnInit nhiệm vụ là lm vc và tt vs API 
     ngOnInit(): void{
      console.log('Initialization Component')
@@ -108,4 +114,7 @@ export class HomeComponent implements OnInit{
     // ngDoCheck(): void {
     //     console.log("check Component")
     // }
+    handleIsVisible(){
+      this.isVisible = !this.isVisible
+    }
 }
